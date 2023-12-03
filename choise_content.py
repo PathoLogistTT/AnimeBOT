@@ -32,3 +32,21 @@ async def send_music(message: types.Message):
         await message.reply_audio(music_file)
     username = message.from_user.username
     logger.info(f"@{username} отправлена музыка: {music}")
+
+async def send_anime_mem(message: types.Message):
+    reply = await get_random_reply()
+    await message.reply(reply)
+    meme = random.choice(os.listdir("C:/Users/Даниил/Desktop/memes/anime"))
+    with open(f"C:/Users/Даниил/Desktop/memes/anime/{meme}", 'rb') as photo:
+        await message.reply_photo(photo)
+    username = message.from_user.username
+    logger.info(f"@{username} отправлен аниме мем: {meme}")
+
+async def send_gachi_mem(message: types.Message):
+    reply = await get_random_reply()
+    await message.reply(reply)
+    meme = random.choice(os.listdir("C:/Users/Даниил/Desktop/memes/gachi"))
+    with open(f"C:/Users/Даниил/Desktop/memes/gachi/{meme}", 'rb') as photo:
+        await message.reply_photo(photo)
+    username = message.from_user.username
+    logger.info(f"@{username} отправлен гачи мем: {meme}")
